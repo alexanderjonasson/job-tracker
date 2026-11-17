@@ -25,7 +25,7 @@ By [Alexander Jonasson](https://github.com/alexanderjonasson).
 - [x] Next.js project with TypeScript and Tailwind
 - [x] PostgreSQL running in Docker
 - [x] Database schema
-- [ ] List, add, edit and delete applications
+- [x] List, add, edit and delete applications
 - [ ] Run the whole app with Docker Compose
 
 ## Getting started
