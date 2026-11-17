@@ -26,7 +26,7 @@ By [Alexander Jonasson](https://github.com/alexanderjonasson).
 - [x] PostgreSQL running in Docker
 - [x] Database schema
 - [x] List, add, edit and delete applications
-- [ ] Run the whole app with Docker Compose
+- [x] Run the whole app with Docker Compose
 
 ## Getting started
 
