@@ -39,3 +39,15 @@ export async function updateJobStatus(formData: FormData) {
 
   refresh();
 }
+
+export async function deleteJob(formData: FormData) {
+  const id = Number(formData.get("id"));
+
+  if (!Number.isInteger(id)) {
+    return;
+  }
+
+  await prisma.job.deleteMany({ where: { id } });
+
+  refresh();
+}

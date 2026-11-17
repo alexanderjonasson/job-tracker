@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import { connection } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { JobStatus } from "@/generated/prisma/client";
-import { createJob, updateJobStatus } from "./actions";
+import { createJob, deleteJob, updateJobStatus } from "./actions";
 
 async function JobList() {
   await connection();
@@ -32,6 +32,14 @@ async function JobList() {
             </select>
             <button type="submit" className="rounded border px-2 text-sm">
               Update
+            </button>
+          </form>
+          <form action={deleteJob} className="mt-2">
+            <input type="hidden" name="id" value={job.id} />
+            <button
+              type="submit"
+              className="text-sm text-red-600 hover:underline">
+              Delete
             </button>
           </form>
         </li>
