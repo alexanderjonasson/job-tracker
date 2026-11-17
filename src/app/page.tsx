@@ -1,7 +1,8 @@
 import { Suspense } from "react";
 import { connection } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { createJob } from "./actions";
+import { JobStatus } from "@/generated/prisma/client";
+import { createJob, updateJobStatus } from "./actions";
 
 async function JobList() {
   await connection();
@@ -17,7 +18,22 @@ async function JobList() {
         <li key={job.id} className="rounded border p-3">
           <p className="font-semibold">{job.company}</p>
           <p>{job.role}</p>
-          <p className="text-sm text-gray-500">{job.status}</p>
+          <form action={updateJobStatus} className="mt-2 flex gap-2">
+            <input type="hidden" name="id" value={job.id} />
+            <select
+              name="status"
+              defaultValue={job.status}
+              className="rounded border p-1 text-sm">
+              {Object.values(JobStatus).map((status) => (
+                <option key={status} value={status}>
+                  {status}
+                </option>
+              ))}
+            </select>
+            <button type="submit" className="rounded border px-2 text-sm">
+              Update
+            </button>
+          </form>
         </li>
       ))}
     </ul>
