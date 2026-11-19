@@ -82,7 +82,10 @@ async function JobList() {
             </div>
 
             <div className="mt-4 flex items-center justify-between gap-3 border-t border-gray-100 pt-3 dark:border-gray-800">
-              <form action={updateJobStatus} className="flex gap-2">
+              <form
+                key={job.status}
+                action={updateJobStatus}
+                className="flex gap-2">
                 <input type="hidden" name="id" value={job.id} />
                 <select
                   name="status"
