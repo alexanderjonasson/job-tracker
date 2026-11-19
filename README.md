@@ -4,11 +4,18 @@ A full-stack web app for keeping track of job applications: company, role, link 
 
 By [Alexander Jonasson](https://github.com/alexanderjonasson).
 
+<p>
+  <img src="docs/light.png" alt="Job Tracker in light mode" width="49%" />
+  <img src="docs/dark.png" alt="Job Tracker in dark mode" width="49%" />
+</p>
+
 ## Features
 
 - Add job applications with company, role and an optional link to the ad
-- Change the status of each application
+- Change the status of each application, with a colored badge per status
+- See how many applications, interviews and offers you have
 - Delete applications
+- Light and dark mode, with a toggle that remembers your choice
 - All data is stored in a PostgreSQL database
 - The whole app (database, migrations and Next.js) starts with one command using Docker Compose
 
