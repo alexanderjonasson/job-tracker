@@ -17,11 +17,26 @@ export const metadata: Metadata = {
   description: "Keep track of your job applications",
 };
 
+// Runs before the page is shown, so the right theme is used from the start
+const themeScript = `
+try {
+  const theme = localStorage.getItem("theme");
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  if (theme === "dark" || (!theme && prefersDark)) {
+    document.documentElement.classList.add("dark");
+  }
+} catch {}
+`;
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );

@@ -3,6 +3,7 @@ import { connection } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { JobStatus } from "@/generated/prisma/client";
 import { statusLabels, statusStyles } from "@/lib/status";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { createJob, deleteJob, updateJobStatus } from "./actions";
 
 const inputClass =
@@ -167,11 +168,14 @@ function AddJobForm() {
 export default function Home() {
   return (
     <main className="mx-auto w-full max-w-3xl px-4 py-10 sm:py-16">
-      <header className="mb-8">
-        <h1 className="text-3xl font-bold tracking-tight">Job Tracker</h1>
-        <p className="mt-1 text-gray-600 dark:text-gray-400">
-          Keep track of every application in one place.
-        </p>
+      <header className="mb-8 flex items-start justify-between gap-4">
+        <div>
+          <h1 className="text-3xl font-bold tracking-tight">Job Tracker</h1>
+          <p className="mt-1 text-gray-600 dark:text-gray-400">
+            Keep track of every application in one place.
+          </p>
+        </div>
+        <ThemeToggle />
       </header>
       <AddJobForm />
       <Suspense
